@@ -1,3 +1,15 @@
+"""
+Name: findpi.py
+Purpose: Get the value of pi to n decimal places
+Author: Reza Banankhah
+Algorithm: Chudnovsky Algorithm
+
+Dependencies:
+Math provides fast square rooting
+Decimal gives the Decimal data type which is much better than Float
+sys is needed to set the depth for recursion.
+time is used to get runtime of calculation
+"""
 from time import time
 from cmath import sqrt
 import math, sys
@@ -39,12 +51,14 @@ def chudnovskyPi(limit):
 
 def main():
     limit = int(input("Enter the number of decimals to calculate to: "))
+    # don't really understand why 10**100 is the only number that works,
+    # realistically should use the limit
     print(chudnovskyPi(10**100))
     for log10_digits in range(1,4):
         digits = 10**log10_digits
         limit = 10**digits
 
-        start =time()
+        start = time()
         pi = chudnovskyPi(limit)
         #print(pi)
         print("chudnovsky: digits",digits,"time",time()-start)
